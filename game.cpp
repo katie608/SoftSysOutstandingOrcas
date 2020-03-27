@@ -48,7 +48,39 @@ void playSound(std::string filename)
 }
 }
 
-int main() {
+void buttonPress()
+{
+  if (event.type == sf::Event::MouseButtonPressed){
+    // if mouse button is pressed
+      if (event.mouseButton.button == sf::Mouse::Left){
+        // if the mouse button was the left one
+        // print out the x and y values of the mouse
+        int x = event.mouseButton.x;
+        int y = event.mouseButton.y;
+          // std::cout << "the left button was pressed" << std::endl;
+          // std::cout << "mouse x: " << x << std::endl;
+          // std::cout << "mouse y: " << y << std::endl;
+
+        if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
+          std::cout << "Shape 1 was pressed" << std::endl;
+          playSound("resources/sound.wav");
+        }
+
+        else if (abs((x-25)-400)<25 && abs((y-25)-300)<25) {
+          std::cout << "Shape 2 was pressed" << std::endl;
+          playSound("resources/canary.wav");
+        }
+
+        else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
+          std::cout << "Shape 3 was pressed" << std::endl;
+          playSound("resources/siren.wav");
+  }
+}
+}
+}
+
+int main()
+{
     sf::CircleShape shape1(25.f);//radius
     shape1.setFillColor(sf::Color::Red);
     shape1.setPosition(200, 300);
@@ -67,32 +99,7 @@ int main() {
               // close window if window close (red x in corner of window) is pushed
                 window.close();
             }
-            if (event.type == sf::Event::MouseButtonPressed){
-              // if mouse button is pressed
-                if (event.mouseButton.button == sf::Mouse::Left){
-                  // if the mouse button was the left one
-                  // print out the x and y values of the mouse
-                  int x = event.mouseButton.x;
-                  int y = event.mouseButton.y;
-                    // std::cout << "the left button was pressed" << std::endl;
-                    // std::cout << "mouse x: " << x << std::endl;
-                    // std::cout << "mouse y: " << y << std::endl;
-
-                  if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
-                    std::cout << "Shape 1 was pressed" << std::endl;
-                    playSound("resources/sound.wav");
-                  }
-
-                  else if (abs((x-25)-400)<25 && abs((y-25)-300)<25) {
-                    std::cout << "Shape 2 was pressed" << std::endl;
-                    playSound("resources/canary.wav");
-                  }
-
-                  else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
-                    std::cout << "Shape 3 was pressed" << std::endl;
-                    playSound("resources/siren.wav");
-            }
-
+            buttonPress();
         }
 
         window.clear();
