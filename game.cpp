@@ -15,8 +15,40 @@ https://www.sfml-dev.org/tutorials/2.1/start-linux.php
 #include  <iostream>
 #include <SFML/Audio.hpp>
 
+sf::RenderWindow window(sf::VideoMode(1000, 600), "SFML Game"); //width, height
+sf::Event event;
+
+void playSound(std::string filename)
+{
+  sf::SoundBuffer buffer;
+  if (!buffer.loadFromFile(filename))
+  {
+        printf("Error. Sound file invalid.");
+        return;
+      }
+  sf::Sound sound;
+  sound.setBuffer(buffer);
+  sound.play();
+  while (sound.getStatus() == sf::Sound::Playing)
+  {
+    while (window.pollEvent(event)){ // listen for events
+        if (event.type == sf::Event::MouseButtonPressed){
+          // if mouse button is pressed
+            if (event.mouseButton.button == sf::Mouse::Right){
+              // if the mouse button was the left one
+              // print out the x and y values of the mouse
+              sound.stop();
+              break;
+            }
+          }
+          else{
+    sf::sleep(sf::milliseconds(100));
+  }
+  }
+}
+}
+
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1000, 600), "SFML Game"); //width, height
     sf::CircleShape shape1(25.f);//radius
     shape1.setFillColor(sf::Color::Red);
     shape1.setPosition(200, 300);
@@ -30,7 +62,6 @@ int main() {
     shape3.setPosition(600, 300);
 
     while (window.isOpen()){
-        sf::Event event;
         while (window.pollEvent(event)){ // listen for events
             if (event.type == sf::Event::Closed){
               // close window if window close (red x in corner of window) is pushed
@@ -49,94 +80,17 @@ int main() {
 
                   if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
                     std::cout << "Shape 1 was pressed" << std::endl;
-                    sf::SoundBuffer buffer;
-                    if (!buffer.loadFromFile("resources/sound.wav"))
-                    {
-                          printf("Error. Sound file invalid.");
-                          return -1;
-                        }
-                    sf::Sound sound;
-                    sound.setBuffer(buffer);
-                    sound.play();
-                    while (sound.getStatus() == sf::Sound::Playing)
-                    {
-                      while (window.pollEvent(event)){ // listen for events
-                          if (event.type == sf::Event::MouseButtonPressed){
-                            // if mouse button is pressed
-                              if (event.mouseButton.button == sf::Mouse::Right){
-                                // if the mouse button was the left one
-                                // print out the x and y values of the mouse
-                                sound.stop();
-                                break;
-                              }
-                            }
-                            else{
-                      sf::sleep(sf::milliseconds(100));
-                    }
-                    }
-                  }
+                    playSound("resources/sound.wav");
                   }
 
                   else if (abs((x-25)-400)<25 && abs((y-25)-300)<25) {
                     std::cout << "Shape 2 was pressed" << std::endl;
-                    sf::SoundBuffer buffer;
-                    if (!buffer.loadFromFile("resources/canary.wav"))
-                    {
-                          printf("Error. Sound file invalid.");
-                          return -1;
-                        }
-                    sf::Sound sound;
-                    sound.setBuffer(buffer);
-                    sound.play();
-                    while (sound.getStatus() == sf::Sound::Playing)
-                    {
-                      while (window.pollEvent(event)){ // listen for events
-                          if (event.type == sf::Event::MouseButtonPressed){
-                            // if mouse button is pressed
-                              if (event.mouseButton.button == sf::Mouse::Right){
-                                // if the mouse button was the left one
-                                // print out the x and y values of the mouse
-                                sound.stop();
-                                break;
-                              }
-                            }
-                            else{
-                      sf::sleep(sf::milliseconds(100));
-                    }
-                    }
-                  }
+                    playSound("resources/canary.wav");
                   }
 
                   else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
                     std::cout << "Shape 3 was pressed" << std::endl;
-                    sf::SoundBuffer buffer;
-                    if (!buffer.loadFromFile("resources/siren.wav"))
-                    {
-                          printf("Error. Sound file invalid.");
-                          return -1;
-                        }
-                    sf::Sound sound;
-                    sound.setBuffer(buffer);
-                    sound.play();
-                    while (sound.getStatus() == sf::Sound::Playing)
-                    {
-                      while (window.pollEvent(event)){ // listen for events
-                          if (event.type == sf::Event::MouseButtonPressed){
-                            // if mouse button is pressed
-                              if (event.mouseButton.button == sf::Mouse::Right){
-                                // if the mouse button was the left one
-                                // print out the x and y values of the mouse
-                                sound.stop();
-                                break;
-                              }
-                            }
-                            else{
-                      sf::sleep(sf::milliseconds(100));
-                    }
-                    }
-                  }
-                  }
-                }
+                    playSound("resources/siren.wav");
             }
 
         }
