@@ -50,7 +50,7 @@ int main() {
                   if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
                     std::cout << "Shape 1 was pressed" << std::endl;
                     sf::SoundBuffer buffer;
-                    if (!buffer.loadFromFile("sound.wav"))
+                    if (!buffer.loadFromFile("resources/sound.wav"))
                     {
                           printf("Error. Sound file invalid.");
                           return -1;
@@ -110,7 +110,7 @@ int main() {
                   else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
                     std::cout << "Shape 3 was pressed" << std::endl;
                     sf::SoundBuffer buffer;
-                    if (!buffer.loadFromFile("siren.wav"))
+                    if (!buffer.loadFromFile("resources/siren.wav"))
                     {
                           printf("Error. Sound file invalid.");
                           return -1;
