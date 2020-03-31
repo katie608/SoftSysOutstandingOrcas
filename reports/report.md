@@ -1,9 +1,12 @@
-#Learning C++ Game Design
+# Learning C++ Game Design
 
-##Katie Foster, Shirin Kuppusamy, Mahima Beltur
+## Katie Foster, Shirin Kuppusamy, Mahima Beltur
+
+### Our Goals
 
 We did a series of C++ game design tutorials in order to meet our learning goals of becoming familiar with C++ and how to apply C++ to game design. After encountering difficulties with the first tutorial that we selected, we altered our learning goal to encompass learning C++ in Linux, without the use of Visual Studio. Our MVP was to complete all the tutorials we identified as important, and our stretch goal was to collaboratively create a short game based on what we learned from the tutorials. We accomplished our stretch goal and were able to collaboratively develop a game that incorporated the elements we learned from the tutorials we completed. 
 
+### Detailing of our Code
 Our game/visualization consists of a window with a background image, an ambient background noise, and animal images. Upon left clicking the animal, it will produce a sound, and upon right clicking, the noise will end. 
 
 The first component of the project was getting a background image to appear on the window:
@@ -65,6 +68,7 @@ if (event.type == sf::Event::MouseButtonPressed){
   ```
 The last component of this function is to stop the sound and break out of the function ```sound.stop();``` if the mouse is right clicked. This follows a similar structure as the left click code detailed above.
 
+### Reflection
 One design decision we made was to encapsulate large chunks of code into functions and then call them in main. This posed a challenge because like other variables, sfml objects are not usable outside of the scope in which they were defined. Yet, in order for the functions to work as intended, operations need to be performed on the music, event, and window objects outside of the functions in which they are primarily used (the same instance of some of them are also used in multiple functions). Thus, we made the design decision to declare some variables globally, especially since we are working only in one .cpp file, and encapsulate code in fuctions. This was primarily advantageous because it helped make the flow of the code clearer, and it avoided repetition of large segments of code. 
 
 Overall, we learned a lot from this project. We learned basic C++ syntax and declaration options. We also learned how to use the sfml library. Furthermore, we achieved our learning goals of working with game design and using the tutorials we referred to in order to create an end product. In essence, we all learned a lot about how to work with the sfml library and c++ and feel more comfortable now being able to use this knowledge to create more complex projects in future. We were able to accomplish more than we'd hoped for, and overall feel satisfied. One thing we began experimenting with and want to look at more in future is using classes. Our above decision choice could have been simplified further by using self-defined classes and a more object oriented approach, so that is something we want to study more moving forward.
