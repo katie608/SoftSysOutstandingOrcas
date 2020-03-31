@@ -37,7 +37,7 @@ void playBackground()
   ```
 This function opens the music file, plays it, and sets the loop to true to allow it to continue to play for however long the window is open. When this function is called in main, it can continue to to play as the rest of the sequence executes because music plays on its own thread in sfml.
 
-Creating the objects follows the same principle as creating the background image.
+Creating the objects follows the same principle as creating the background image. An important part of this step was positioning the objects in places that are well spaced such that clicks don't overlap, but also such that they are aesthetically placed.
 
 In order to recognize clicking on the image, we implemented a mouse click function:
 
@@ -54,7 +54,7 @@ if (event.type == sf::Event::MouseButtonPressed){
           std::cout << "Snake was pressed" << std::endl;
           playSound("resources/snakeHiss.wav");
  ```
- The playSound function shown above is shown below:
+ The playSound function called above is shown below:
 
 ```
   sf::SoundBuffer buffer;
