@@ -94,17 +94,36 @@ int main()
   //my_music.playBackground();
   playBackground();
 
-    sf::CircleShape shape1(25.f);//radius
-    shape1.setFillColor(sf::Color::Red);
-    shape1.setPosition(200, 300);
+    sf::Texture shape1;
+    shape1.loadFromFile("snek.jpg");
+    sf:: Sprite snake;
+    snake.setTexture(shape1);
+    snake.setPosition(200, 300);
 
-    sf::CircleShape shape2(25.f);//radius
-    shape2.setFillColor(sf::Color::Green);
-    shape2.setPosition(400, 300);
+    sf::Texture shape2;
+    shape2.loadFromFile("bord.jpg");
+    sf:: Sprite bird;
+    bird.setTexture(shape2);
+    bird.setPosition(200, 300);
 
-    sf::CircleShape shape3(25.f);//radius
-    shape3.setFillColor(sf::Color::Blue);
-    shape3.setPosition(600, 300);
+    sf::Texture shape3;
+    shape1.loadFromFile("oohoohaahaah.jpg");
+    sf:: Sprite monkey;
+    monkey.setTexture(shape3);
+    monkey.setPosition(200, 300);
+
+
+    // sf::Texture shape1(25.f);//radius
+    // shape1.setFillColor(sf::Color::Red);
+    // shape1.setPosition(200, 300);
+    //
+    // sf::CircleShape shape2(25.f);//radius
+    // shape2.setFillColor(sf::Color::Green);
+    // shape2.setPosition(400, 300);
+    //
+    // sf::CircleShape shape3(25.f);//radius
+    // shape3.setFillColor(sf::Color::Blue);
+    // shape3.setPosition(600, 300);
 
     sf:: Texture texture;
     texture.loadFromFile("forest2.jpg");
@@ -123,9 +142,9 @@ int main()
         window.clear();
         window.draw(sprite_back);
 
-        window.draw(shape1);
-        window.draw(shape2);
-        window.draw(shape3);
+        window.draw(snake);
+        window.draw(bird);
+        window.draw(monkey);
         window.display();
 }
     return 0;
