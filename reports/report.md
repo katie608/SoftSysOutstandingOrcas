@@ -64,5 +64,19 @@ if (event.type == sf::Event::MouseButtonPressed){
   }
   ```
 The last component of this function is to stop the sound and break out of the function ```sound.stop();``` if the mouse is right clicked. This follows a similar structure as the left click code detailed above.
+
+One design decision we made was to encapsulate large chunks of code into functions and then call them in main. This posed a challenge because like other variables, sfml objects are not usable outside of the scope in which they were defined. Yet, in order for the functions to work as intended, operations need to be performed on the music, event, and window objects outside of the functions in which they are primarily used (the same instance of some of them are also used in multiple functions). Thus, we made the design decision to declare some variables globally, especially since we are working only in one .cpp file, and encapsulate code in fuctions. This was primarily advantageous because it helped make the flow of the code clearer, and it avoided repetition of large segments of code. 
+
+Overall, we learned a lot from this project. We learned basic C++ syntax and declaration options. We also learned how to use the sfml library. Furthermore, we achieved our learning goals of working with game design and using the tutorials we referred to in order to create an end product. In essence, we all learned a lot about how to work with the sfml library and c++ and feel more comfortable now being able to use this knowledge to create more complex projects in future. We were able to accomplish more than we'd hoped for, and overall feel satisfied. One thing we began experimenting with and want to look at more in future is using classes. Our above decision choice could have been simplified further by using self-defined classes and a more object oriented approach, so that is something we want to study more moving forward.
+
+To play our game, run the following commands:
+```
+g++ -c game.cpp
+g++ game.o -o sfml-app -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
+./sfml-app
+```
+Enjoy!
+
+
   
 
