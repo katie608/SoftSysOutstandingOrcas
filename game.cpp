@@ -17,6 +17,7 @@ https://www.sfml-dev.org/tutorials/2.1/start-linux.php
 
 sf::RenderWindow window(sf::VideoMode(1000, 600), "SFML Game"); //width, height
 sf::Event event;
+sf::Music music;
 
 void playSound(std::string filename)
 {
@@ -29,6 +30,7 @@ void playSound(std::string filename)
   sf::Sound sound;
   sound.setBuffer(buffer);
   sound.play();
+  sound.setLoop(true);
   while (sound.getStatus() == sf::Sound::Playing)
   {
     while (window.pollEvent(event)){ // listen for events
@@ -63,7 +65,7 @@ void buttonPress()
 
         if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
           std::cout << "Shape 1 was pressed" << std::endl;
-          playSound("resources/sound.wav");
+          playSound("resources/snakeHiss.wav");
         }
 
         else if (abs((x-25)-400)<25 && abs((y-25)-300)<25) {
@@ -73,14 +75,25 @@ void buttonPress()
 
         else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
           std::cout << "Shape 3 was pressed" << std::endl;
-          playSound("resources/siren.wav");
+          playSound("resources/monkey.wav");
   }
 }
 }
 }
 
+void playBackground()
+  {
+      music.openFromFile("resources/forest_ambience.wav");
+      music.play();
+      music.setLoop(true);
+  }
+
 int main()
 {
+  //backgroundMusic my_music;
+  //my_music.playBackground();
+  playBackground();
+
     sf::CircleShape shape1(25.f);//radius
     shape1.setFillColor(sf::Color::Red);
     shape1.setPosition(200, 300);
@@ -107,7 +120,6 @@ int main()
         window.draw(shape2);
         window.draw(shape3);
         window.display();
-    }
-
+}
     return 0;
 }
