@@ -64,17 +64,17 @@ void buttonPress()
           // std::cout << "mouse y: " << y << std::endl;
 
         if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
-          std::cout << "Shape 1 was pressed" << std::endl;
+          std::cout << "Snake was pressed" << std::endl;
           playSound("resources/snakeHiss.wav");
         }
 
         else if (abs((x-25)-400)<25 && abs((y-25)-300)<25) {
-          std::cout << "Shape 2 was pressed" << std::endl;
+          std::cout << "Canary was pressed" << std::endl;
           playSound("resources/canary.wav");
         }
 
         else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
-          std::cout << "Shape 3 was pressed" << std::endl;
+          std::cout << "Monkey was pressed" << std::endl;
           playSound("resources/monkey.wav");
   }
 }
@@ -95,25 +95,25 @@ int main()
   playBackground();
 
     sf::Texture shape1;
-    shape1.loadFromFile("snek.jpg");
+    shape1.loadFromFile("Images/snek.jpg");
     sf:: Sprite snake;
     snake.setTexture(shape1);
     snake.setPosition(200, 300);
 
     sf::Texture shape2;
-    shape2.loadFromFile("bord.jpg");
+    shape2.loadFromFile("Images/bord.jpg");
     sf:: Sprite bird;
     bird.setTexture(shape2);
-    bird.setPosition(200, 300);
+    bird.setPosition(400, 300);
 
     sf::Texture shape3;
-    shape1.loadFromFile("oohoohaahaah.jpg");
+    shape3.loadFromFile("Images/oohoohaahaah.jpg");
     sf:: Sprite monkey;
     monkey.setTexture(shape3);
-    monkey.setPosition(200, 300);
+    monkey.setPosition(600, 300);
 
 
-    // sf::Texture shape1(25.f);//radius
+    // sf::CircleShape shape1(25.f);//radius
     // shape1.setFillColor(sf::Color::Red);
     // shape1.setPosition(200, 300);
     //
@@ -126,7 +126,7 @@ int main()
     // shape3.setPosition(600, 300);
 
     sf:: Texture texture;
-    texture.loadFromFile("forest2.jpg");
+    texture.loadFromFile("Images/forest2.jpg");
     sf:: Sprite sprite_back;
     sprite_back.setTexture(texture);
 
