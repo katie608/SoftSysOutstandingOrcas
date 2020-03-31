@@ -12,7 +12,7 @@ https://www.sfml-dev.org/tutorials/2.1/start-linux.php
 */
 
 #include <SFML/Graphics.hpp>
-#include  <iostream>
+#include <iostream>
 #include <SFML/Audio.hpp>
 
 sf::RenderWindow window(sf::VideoMode(1000, 600), "SFML Game"); //width, height
@@ -106,6 +106,11 @@ int main()
     shape3.setFillColor(sf::Color::Blue);
     shape3.setPosition(600, 300);
 
+    sf:: Texture texture;
+    texture.loadFromFile("forest2.jpg");
+    sf:: Sprite sprite_back;
+    sprite_back.setTexture(texture);
+
     while (window.isOpen()){
         while (window.pollEvent(event)){ // listen for events
             if (event.type == sf::Event::Closed){
@@ -116,6 +121,8 @@ int main()
         }
 
         window.clear();
+        window.draw(sprite_back);
+
         window.draw(shape1);
         window.draw(shape2);
         window.draw(shape3);
