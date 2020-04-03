@@ -63,20 +63,22 @@ void buttonPress()
           // std::cout << "mouse x: " << x << std::endl;
           // std::cout << "mouse y: " << y << std::endl;
 
-        if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
+//150, 450
+        if(abs((x-200)-150)<200 && abs((y-100)-450) < 100){
           std::cout << "Snake was pressed" << std::endl;
           playSound("resources/snakeHiss.wav");
         }
-
-        else if (abs((x-25)-400)<25 && abs((y-25)-300)<25) {
+//(400, 150)
+        else if (abs((x-100)-400)<100 && abs((y-100)-150)<100) {
           std::cout << "Canary was pressed" << std::endl;
           playSound("resources/canary.wav");
         }
-
-        else if (abs((x-25)-600)<25 && abs((y-25)-300)<25) {
+//750,300
+        else if (abs((x-150)-750)<150 && abs((y-100)-300)<100) {
           std::cout << "Monkey was pressed" << std::endl;
           playSound("resources/monkey.wav");
   }
+  //Need to fix radius, only works to the bottom and right of circle.
 }
 }
 }
@@ -95,40 +97,43 @@ int main()
   playBackground();
 
     sf::Texture shape1;
-    shape1.loadFromFile("Images/snek.jpg");
+    shape1.loadFromFile("Images/snekpt2.png");
     sf:: Sprite snake;
     snake.setTexture(shape1);
-    snake.setPosition(200, 300);
+    snake.setPosition(150, 450);
+    snake.setScale(sf::Vector2f(0.4f, 0.4f));
 
     sf::Texture shape2;
-    shape2.loadFromFile("Images/bord.jpg");
+    shape2.loadFromFile("Images/bordpt2.png");
     sf:: Sprite bird;
     bird.setTexture(shape2);
-    bird.setPosition(400, 300);
+    bird.setPosition(400, 150);
+    bird.setScale(sf::Vector2f(0.5f, 0.5f));
 
     sf::Texture shape3;
-    shape3.loadFromFile("Images/oohoohaahaah.jpg");
+    shape3.loadFromFile("Images/monkeypt2.png");
     sf:: Sprite monkey;
     monkey.setTexture(shape3);
-    monkey.setPosition(600, 300);
+    monkey.setPosition(750,300);
+    monkey.setScale(sf::Vector2f(0.2f, 0.2f));
 
-
-    // sf::CircleShape shape1(25.f);//radius
-    // shape1.setFillColor(sf::Color::Red);
-    // shape1.setPosition(200, 300);
+    // sf::CircleShape shape4(25.f);//radius
+    // shape4.setFillColor(sf::Color::Red);
+    // shape4.setPosition(200, 500);
     //
-    // sf::CircleShape shape2(25.f);//radius
-    // shape2.setFillColor(sf::Color::Green);
-    // shape2.setPosition(400, 300);
+    // sf::CircleShape shape5(25.f);//radius
+    // shape5.setFillColor(sf::Color::Green);
+    // shape5.setPosition(450, 200);
     //
-    // sf::CircleShape shape3(25.f);//radius
-    // shape3.setFillColor(sf::Color::Blue);
-    // shape3.setPosition(600, 300);
+    // sf::CircleShape shape6(25.f);//radius
+    // shape6.setFillColor(sf::Color::Blue);
+    // shape6.setPosition(775,350);
 
     sf:: Texture texture;
-    texture.loadFromFile("Images/forest2.jpg");
+    texture.loadFromFile("Images/runforrestrun.png");
     sf:: Sprite sprite_back;
     sprite_back.setTexture(texture);
+    sprite_back.setScale(sf::Vector2f(0.45f,0.45f));
 
     while (window.isOpen()){
         while (window.pollEvent(event)){ // listen for events
@@ -145,6 +150,9 @@ int main()
         window.draw(snake);
         window.draw(bird);
         window.draw(monkey);
+        // window.draw(shape4);
+        // window.draw(shape5);
+        // window.draw(shape6);
         window.display();
 }
     return 0;
