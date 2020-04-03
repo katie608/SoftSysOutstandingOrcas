@@ -39,7 +39,7 @@ This function opens the music file, plays it, and sets the loop to true to allow
 
 Creating the objects follows the same principle as creating the background image. An important part of this step was positioning the objects in places that are well spaced such that clicks don't overlap, but also such that they are aesthetically placed.
 
-In order to recognize clicking on the image, we implemented a mouse click function:
+In order to recognize clicking on the image, we implemented a mouse click function, where we globally defined the event object:
 
 ```
 if (event.type == sf::Event::MouseButtonPressed){
@@ -47,7 +47,7 @@ if (event.type == sf::Event::MouseButtonPressed){
         int x = event.mouseButton.x;
         int y = event.mouseButton.y;
  ```
- The event object was also globally defined. If the event type is MouseButtonPressed and if it is a Left click, then the integers x and y are set to the position of the mouse. If the x and y positions are within the area encompassed by a shape, then a button press is recongized and a sound is played. Here is an example:
+If the event type is MouseButtonPressed and if it is a Left click, then we set the integers x and y to the position of the mouse. If the x and y positions are within the area encompassed by a shape, then the code recognizes the button press as a click on top of the shape and plays the sound. Here is an example:
 
  ```
    if((x-200)-150)<200 && abs((y-100)-450) < 100){
@@ -63,7 +63,7 @@ if (event.type == sf::Event::MouseButtonPressed){
   sound.play();
   sound.setLoop(true);
  ```
- This first segment of the function creates the SoundBuffer object and the Sound object. We use a Sound instead of a Music object here because the sounds are short enough that the audio data can be loaded in contrast to the ambient noise which could more effectively be streamed. It then plays the sound and sets the loop to true to continue playing the sound until it is stopped. Unfortunately, this code alone will not actually render a sound output because the sound is being repeatedly played with no pause to allow for processing. Thus, while the sound is playing, we add a sleep statement:
+ This first segment of the function creates the SoundBuffer object and the Sound object. We use a Sound object instead of a Music object because the sounds are short enough that the audio data can be loaded in contrast to the ambient noise which could more effectively be streamed. It then plays the sound and sets the loop to true to continue playing the sound until it is stopped. Unfortunately, this code alone will not actually render a sound output because the sound is being repeatedly played with no pause to allow for processing. Thus, while the sound is playing, we add a sleep statement:
 
  ```
    while (sound.getStatus() == sf::Sound::Playing)
@@ -74,11 +74,11 @@ if (event.type == sf::Event::MouseButtonPressed){
 The last component of this function is to stop the sound and break out of the function ```sound.stop();``` if the mouse is right clicked. This follows a similar structure as the left click code detailed above.
 
 ### Reflection
-One design decision we made was to encapsulate large chunks of code into functions and then call them in main. This posed a challenge because like other variables, sfml objects are not usable outside of the scope in which they were defined. Yet, in order for the functions to work as intended, operations need to be performed on the music, event, and window objects outside of the functions in which they are primarily used (the same instance of some of them are also used in multiple functions). Thus, we made the design decision to declare some variables globally, especially since we are working only in one .cpp file, and encapsulate code in fuctions. This was primarily advantageous because it helped make the flow of the code clearer, and it avoided repetition of large segments of code.
+One design decision we made was to encapsulate large chunks of code into functions and then call them in main. This posed a challenge because like other variables, SFML objects are not usable outside of the scope in which they were defined. Yet, in order for the functions to work as intended, operations need to be performed on the music, event, and window objects outside of the functions in which they are primarily used (the same instance of some of them are also used in multiple functions). Thus, we made the design decision to declare some variables globally, especially since we are working only in one .cpp file, and encapsulate code in fuctions. This was primarily advantageous because it helped make the flow of the code clearer, and it avoided repetition of large segments of code.
 
 In terms of process, we primarily relied on our group chat and trello to document and divide labor. We all did our segment of tutorials. During the project, Katie worked with locating graphics and button clicking, Shirin worked with audio outputting, and Mahima worked with aesthetics/visual design. We did a lot of pair programming using zoom screen sharing, so we did a lot of committing code from one laptop while all contributing once we merged code.
 
-Overall, we learned a lot from this project. We learned basic C++ syntax and declaration options. We also learned how to use the sfml library, and in doing so, got practice in learning from documentation. Furthermore, we achieved our learning goals of working with game design and using the tutorials we referred to in order to create an end product. Overall, we all learned a lot about how to work with the sfml library and C++ and feel more comfortable now being able to use this knowledge to create more complex projects in future. We were able to accomplish more than we'd hoped for, and overall feel satisfied. One thing we began experimenting with and want to look at more in future is using classes. Our above decision choice could have been simplified further by using self-defined classes and a more object oriented approach, so that is something we want to study more moving forward.
+Overall, we learned a lot from this project. We learned basic C++ syntax and declaration options. We also learned how to use the SFML library, and in doing so, got practice in learning from documentation. Furthermore, we achieved our learning goals of working with game design and using the tutorials we referred to in order to create an end product. Overall, we all learned a lot about how to work with the sfml library and C++ and feel more comfortable now being able to use this knowledge to create more complex projects in future. We were able to accomplish more than we'd hoped for, and overall feel satisfied. One thing we began experimenting with and want to look at more in future is using classes. Our above decision choice could have been simplified further by using self-defined classes and a more object oriented approach, so that is something we want to study more moving forward.
 
 To play our game, run the following commands:
 ```
