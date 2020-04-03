@@ -86,4 +86,6 @@ g++ -c game.cpp
 g++ game.o -o sfml-app -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 ./sfml-app
 ```
+You should also make sure you have the SFML libraries downloaded to your computer. You can follow the instructions in the tutorial we used to do so if you need guidance. 
+
 Enjoy!
