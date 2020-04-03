@@ -18,7 +18,7 @@ The first component of the project was getting a background image to appear on t
 
  ```
   sf:: Texture texture;
-  texture.loadFromFile("forest2.jpg");
+  texture.loadFromFile("runforrestrun.png");
   sf:: Sprite sprite_back;
   sprite_back.setTexture(texture);
  ```
@@ -50,13 +50,13 @@ if (event.type == sf::Event::MouseButtonPressed){
  The event object was also globally defined. If the event type is MouseButtonPressed and if it is a Left click, then the integers x and y are set to the position of the mouse. If the x and y positions are within the area encompassed by a shape, then a button press is recongized and a sound is played. Here is an example:
 
  ```
-   if(abs((x-25)-200)<25 && abs((y-25)-300)<25){
+   if((x-200)-150)<200 && abs((y-100)-450) < 100){
           std::cout << "Snake was pressed" << std::endl;
           playSound("resources/snakeHiss.wav");
  ```
  The playSound function called above is shown below:
 
-```
+ ```
   sf::SoundBuffer buffer;
   sf::Sound sound;
   sound.setBuffer(buffer);
